@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Tweets</title>
+  </head>
+  <body style="background-color: #33e9ff;">
+    <form class="ml-5" action="/tweets">
+      <div class="form-row align-self-center mt-5 mr-5 ml-5">
+          <div class="col-md-7">
+            <input type="text" class="form-control float-right" id="search" name="search" placeholder="Search tweet topic..." style="width:20rem;">
+          </div>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </div>
+      </div>
+    </form>
+    {% for tweet, ss, cp in tweet_list %}
+        <div class="card align-self-center mt-5 mb-5 mx-auto" style="width:25rem;">
+          {% if cp >= 0.5 %}
+          <div class="card-header bg-success">
+            <strong>MOSTLY POSITIVE</strong>
+          </div>
+          {% elif cp <= -0.5%}
+          <div class="card-header bg-danger">
+            <strong>MOSTLY NEGATIVE</strong>
+          </div>
+          {% else %}
+          <div class="card-header bg-secondary">
+            <strong>MOSTLY NEUTRAL</strong>
+          </div>
+          {% endif %}
+          <div class="card-body">
+            <p>{{tweet.text}}</p>
+          </div>
+          <div class="card-footer">
+              <p>{{ss}}</p>
+          </div>
+        </div>
+    {% endfor %}
+  </body>
+</html>
