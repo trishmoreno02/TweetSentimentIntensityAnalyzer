@@ -9,7 +9,7 @@
     <form class="ml-5" action="/tweets">
       <div class="form-row align-self-center mt-5 mr-5 ml-5">
           <div class="col-md-7">
-            <input type="text" class="form-control float-right" id="search" name="search" placeholder="Search tweet topic..." style="width:20rem;">
+            <input type="text" value="{{topic}}" class="form-control float-right" id="search" name="search" placeholder="Search tweet topic..." style="width:20rem;">
           </div>
           <div class="col-md-4">
             <button type="submit" class="btn btn-primary">Search</button>
@@ -41,3 +41,5 @@
     {% endfor %}
   </body>
 </html>
+
+<!-- For Version 2, I'm thinking of Real-time tweet streaming -->
